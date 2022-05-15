@@ -1,0 +1,9 @@
+@mixin w-h($w, $h) {
+    width: $w;
+    height: $h;
+}
+
+@mixin dGrid {
+    display: grid;
+    place-items: center;
+}
