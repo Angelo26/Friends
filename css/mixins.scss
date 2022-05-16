@@ -1,9 +1,31 @@
-@mixin w-h($w, $h) {
+@mixin w-h($w, $h){
     width: $w;
     height: $h;
 }
 
-@mixin dGrid {
+@mixin dGrid($dir, $fr){
     display: grid;
-    place-items: center;
+
+    @if($dir == "c"){
+        grid-template-columns: $fr;
+    }
+    @if($dir == "r"){
+        grid-template-rows: $fr;
+    }
+}
+
+@mixin dFlex($h, $v, $dir){
+    display: flex;
+    justify-content: $h;
+    align-items: $v;
+    @if($dir == "c"){
+        flex-direction: column;
+    }
+    @else if($dir == "r"){
+        flex-direction: row;
+    }
+    @else{
+        flex-direction: initial;
+    }
+
 }

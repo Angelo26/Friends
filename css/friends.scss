@@ -1,12 +1,103 @@
 @use "index" as *;
 
-div{
-    border: 2px solid red;
-}
+// div{border: 2px solid red;}
 .main{
     background: $bg;
+    font-family: Lato;
     @include w-h(100vw, 100vh);
-    @include dGrid;
-    grid-template-rows: 1fr 3fr;
+    @include dGrid(r, 1fr 3fr);
+
+    .logoAcro{
+        @include w-h(100%, 100%);
+        @include dFlex(center, center, c);
+        h1{
+            font-size: $xl;
+            font-family: $logo;
+            font-weight: bolder;
+            color: dodgerblue;
+            cursor: pointer;
+        }
+        p{
+            font-size: $m;
+            font-weight: bold;
+        }
+    }
+    .logReg{
+        @include w-h(100%, 100%);
+        .logRegCont{
+            margin: 0 auto;
+            background: #fff;
+            border: 3px solid #ccc;
+            @include w-h(300px, auto);
+            @include dFlex(center, start, c);
+            
+            .log, .reg{
+                @include w-h(100%, auto);
+                @include dFlex(center, center, c);
+                
+                h2{
+                    margin-top: 1.5rem;
+                    font-size: calc($xl - $s);
+                    font-weight: bold;
+                }
+
+                form{
+                    @include w-h(100%, auto);
+                    @include dFlex(center, center, c);
+                    .form-group{
+                        @include w-h(calc(80%), auto);
+                        @include dFlex(flex-start, center, c);
+
+                        div{
+                            margin-top: 1.5rem;
+                            @include w-h(100%, auto);
+                            label{
+                                font-size: $s;
+                                color: #666;
+                            }
+
+                            input{
+                                @include w-h(100%, auto);   
+                            }
+
+                        }
+                        button{
+                            @include w-h(100%, auto);    
+                            margin: 1.5rem 0 2rem 0;
+                            padding: .3125rem;
+                            background: dodgerblue;
+                            border: none;
+                            border-radius: .3125rem;
+                            color: #fff;
+                            transition: background .3s ease-in-out;
+                            &:hover{
+                                background: $primary;
+                            }
+                        }
+                        p{
+                            font-size: calc(1rem - 0.1875rem);
+                            font-weight: bold;
+                            color: #000;
+                            margin-bottom: 2rem;
+                            #signin, #signup{
+                                margin-left: .125rem;
+                                color: dodgerblue;
+                                cursor: pointer;
+                            }
+                           
+                            #regLogo{
+                                margin-right: .125rem;
+                                font-family: $logo;
+                                font-size: calc($s - .0625rem);
+                            }
+                        }
+                    }
+                }
+            }
+            .reg{
+                display: none;
+            }
+        }
+    }
 }
 
