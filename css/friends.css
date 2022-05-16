@@ -5,7 +5,7 @@
 }
 
 .main {
-  background: #EFFFFD;
+  background: #FAFAFE;
   font-family: Lato;
   width: 100vw;
   height: 100vh;
@@ -21,8 +21,8 @@
   flex-direction: column;
 }
 .main .logoAcro h1 {
-  font-size: 2rem;
-  font-family: Pacifico;
+  font-size: 2.5rem;
+  font-family: "Permanent Marker";
   font-weight: bolder;
   color: dodgerblue;
   cursor: pointer;
@@ -87,6 +87,7 @@
 .main .logReg .logRegCont .log form .form-group div input, .main .logReg .logRegCont .reg form .form-group div input {
   width: 100%;
   height: auto;
+  padding: 0 0.25rem;
 }
 .main .logReg .logRegCont .log form .form-group button, .main .logReg .logRegCont .reg form .form-group button {
   width: 100%;
@@ -115,8 +116,7 @@
 }
 .main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo {
   margin-right: 0.125rem;
-  font-family: Pacifico;
-  font-size: 0.6875rem;
+  font-family: "Permanent Marker";
 }
 .main .logReg .logRegCont .reg {
   display: none;

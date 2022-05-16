@@ -11,10 +11,10 @@
         @include w-h(100%, 100%);
         @include dFlex(center, center, c);
         h1{
-            font-size: $xl;
+            font-size: $xxl;
             font-family: $logo;
             font-weight: bolder;
-            color: dodgerblue;
+            color: $primary;
             cursor: pointer;
         }
         p{
@@ -58,6 +58,7 @@
 
                             input{
                                 @include w-h(100%, auto);   
+                                padding: 0 .25rem;
                             }
 
                         }
@@ -65,13 +66,13 @@
                             @include w-h(100%, auto);    
                             margin: 1.5rem 0 2rem 0;
                             padding: .3125rem;
-                            background: dodgerblue;
+                            background: $primary;
                             border: none;
                             border-radius: .3125rem;
                             color: #fff;
                             transition: background .3s ease-in-out;
                             &:hover{
-                                background: $primary;
+                                background: $secondary;
                             }
                         }
                         p{
@@ -81,14 +82,14 @@
                             margin-bottom: 2rem;
                             #signin, #signup{
                                 margin-left: .125rem;
-                                color: dodgerblue;
+                                color: $primary;
                                 cursor: pointer;
                             }
                            
                             #regLogo{
                                 margin-right: .125rem;
                                 font-family: $logo;
-                                font-size: calc($s - .0625rem);
+                                // font-size: calc($s - .0625rem);
                             }
                         }
                     }
