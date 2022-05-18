@@ -21,10 +21,11 @@
   flex-direction: column;
 }
 .main .logoAcro h1 {
-  font-size: 2.5rem;
-  font-family: "Permanent Marker";
+  font-size: 3.25rem;
+  font-family: "Shadows Into Light";
   font-weight: bolder;
-  color: dodgerblue;
+  color: #593959;
+  text-shadow: 3px 3px #ccc;
   cursor: pointer;
 }
 .main .logoAcro p {
@@ -74,9 +75,10 @@
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
+  margin-top: 1.5rem;
 }
 .main .logReg .logRegCont .log form .form-group div, .main .logReg .logRegCont .reg form .form-group div {
-  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
   width: 100%;
   height: auto;
 }
@@ -89,34 +91,59 @@
   height: auto;
   padding: 0 0.25rem;
 }
+.main .logReg .logRegCont .log form .form-group .fp, .main .logReg .logRegCont .reg form .form-group .fp {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: column;
+  margin: 0 0 0.75rem 0;
+}
+.main .logReg .logRegCont .log form .form-group .fp h6, .main .logReg .logRegCont .reg form .form-group .fp h6 {
+  font-size: 0.8125rem;
+  font-weight: bold;
+  padding-left: 0.25rem;
+  color: #8d6a9f;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+.main .logReg .logRegCont .log form .form-group .fp h6:hover, .main .logReg .logRegCont .reg form .form-group .fp h6:hover {
+  color: #593959;
+}
 .main .logReg .logRegCont .log form .form-group button, .main .logReg .logRegCont .reg form .form-group button {
   width: 100%;
   height: auto;
-  margin: 1.5rem 0 2rem 0;
+  margin: 0 0 2rem 0;
   padding: 0.3125rem;
-  background: dodgerblue;
+  background: #593959;
   border: none;
-  border-radius: 0.3125rem;
+  border-radius: 0.1825rem;
   color: #fff;
-  transition: background 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 .main .logReg .logRegCont .log form .form-group button:hover, .main .logReg .logRegCont .reg form .form-group button:hover {
-  background: #42C2FF;
+  background: #704c83;
+  box-shadow: 1px 3px 5px #aaa;
+}
+.main .logReg .logRegCont .log form .form-group button:active, .main .logReg .logRegCont .reg form .form-group button:active {
+  box-shadow: none;
 }
 .main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: bold;
   color: #000;
   margin-bottom: 2rem;
 }
 .main .logReg .logRegCont .log form .form-group p #signin, .main .logReg .logRegCont .log form .form-group p #signup, .main .logReg .logRegCont .reg form .form-group p #signin, .main .logReg .logRegCont .reg form .form-group p #signup {
   margin-left: 0.125rem;
-  color: dodgerblue;
+  color: #8d6a9f;
   cursor: pointer;
 }
 .main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo {
-  margin-right: 0.125rem;
-  font-family: "Permanent Marker";
+  margin-right: 0.0625rem;
+  font-family: "Shadows Into Light";
+  font-size: 0.875rem;
 }
 .main .logReg .logRegCont .reg {
   display: none;
