@@ -20,7 +20,10 @@
                             </div>
                             <div class="password">
                                 <label for="lpwd">Password</label>
-                                <input type="password" name="lpwd" id="lpwd">
+                                <input type="password" name="lpwd" id="lpwd" required>
+                            </div>
+                            <div class="fp">
+                                <h6>Forgot password?</h6>
                             </div>
                             <button name="login" type="submit">Sign In</button>
                             <p>New to <span id="regLogo">FRIENDS</span>?<span id="signup"> Create an account.</span></p>
@@ -29,7 +32,7 @@
                 </div>
 
                 <div class="reg">
-                    <h2>Lets get started</h2>
+                    <h2>Lets get started!</h2>
                     
                     <form action="includes/signup.inc.php" method="POST">
                         <div class="form-group">
@@ -40,11 +43,11 @@
                             </div>
                             <div class="password">
                                 <label for="rpwd">Password</label>
-                                <input type="password" name="rpwd" id="rpwd">
+                                <input type="password" name="rpwd" id="rpwd" required>
                             </div>
                             <div class="conform-password">
                                 <label for="crpwd">Confirm Password</label>
-                                <input type="password" name="crpwd" id="crpwd">
+                                <input type="password" name="crpwd" id="crpwd" required>
                             </div>
                             <button name="register" type="submit">Sign Up</button>
                             <p>Already have an account? <span id="signin">Sign in.</span></p>
