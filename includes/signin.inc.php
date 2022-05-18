@@ -27,7 +27,7 @@
             if($row = $stmt->fetch(PDO::FETCH_OBJ)){
               $hashedPwdCheck = password_verify($pwd, $row->password);
               if ($hashedPwdCheck == false){
-                header("Location: ../index.php?$pwd,$row->password");
+                header("Location: ../index.php?login=wrong password");
                 exit();
               }
                           
