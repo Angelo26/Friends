@@ -40,7 +40,7 @@
   margin: 0 auto;
   background: #fff;
   border: 3px solid #ccc;
-  width: 300px;
+  width: 310px;
   height: auto;
   display: flex;
   justify-content: center;
@@ -130,6 +130,9 @@
   box-shadow: none;
 }
 .main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p {
+  width: 100%;
+  height: auto;
+  text-align: center;
   font-size: 0.9375rem;
   font-weight: bold;
   color: #000;
@@ -144,6 +147,18 @@
   margin-right: 0.0625rem;
   font-family: "Shadows Into Light";
   font-size: 0.875rem;
+}
+@media (min-width: 0px) and (max-width: 479px) {
+  .main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo {
+    font-size: 0.75rem;
+    color: #000;
+  }
+}
+@media (min-width: 0px) and (max-width: 479px) {
+  .main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p {
+    font-size: 0.8125rem;
+    color: #000;
+  }
 }
 .main .logReg .logRegCont .reg {
   display: none;

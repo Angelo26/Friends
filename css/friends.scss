@@ -30,7 +30,7 @@
             margin: 0 auto;
             background: #fff;
             border: 3px solid #ccc;
-            @include w-h(300px, auto);
+            @include w-h(310px, auto);
             @include dFlex(center, start, c);
             
             .log, .reg{
@@ -47,7 +47,7 @@
                     @include w-h(100%, auto);
                     @include dFlex(center, center, c);
                     .form-group{
-                        @include w-h(calc(80%), auto);
+                        @include w-h(80%, auto);
                         @include dFlex(flex-start, center, c);
                         margin-top: 1.5rem;
                         div{
@@ -101,6 +101,8 @@
                             }
                         }
                         p{
+                            @include w-h(100%, auto);
+                            text-align: center;
                             font-size: calc($m - .0625rem);
                             font-weight: bold;
                             color: #000;
@@ -115,6 +117,14 @@
                                 margin-right: .0625rem;
                                 font-family: $logo;
                                 font-size: calc($s + .125rem);
+                                @include xs{
+                                    font-size: $s;    
+                                    color: #000;
+                                }
+                            }
+                            @include xs{
+                                font-size: calc($s + 0.0625rem);    
+                                color: #000;
                             }
                         }
                     }
@@ -125,19 +135,4 @@
             }
         }
     }
-}
-
-$tablet-width: 768px;
-$desktop-width: 1024px;
-
-@mixin tablet {
-  @media (min-width: #{$tablet-width}) and (max-width: #{$desktop-width - 1px}) {
-    @content;
-  }
-}
-
-@mixin desktop {
-  @media (min-width: #{$desktop-width}) {
-    @content;
-  }
 }
