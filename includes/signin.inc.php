@@ -34,7 +34,7 @@
               elseif($hashedPwdCheck == $row->password){
                 $_SESSION['userid'] = $row->id;
                 $_SESSION['useremail'] = $row->email;
-                header("Location: ../friends.php?login=Success");
+                header("Location: ../friends.php");
                 exit();
               }
             }

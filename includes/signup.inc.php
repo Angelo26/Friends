@@ -29,7 +29,7 @@ if(isset($_POST['register'])) {
                 $stmt->execute(['email'=>$email]);
                 $result = $stmt->rowCount();
                 if($result>0){
-                    header("Location: ../index.php?user already exist.");
+                    header("Location: ../index.php");
                     exit();
                 }
                 else{
@@ -37,7 +37,7 @@ if(isset($_POST['register'])) {
                     $sql = "Insert into users(email, password) values(:email, :hashedPwd)";
                     $stmt = $this->dbConnect()->prepare($sql);
                     if($stmt->execute(['email'=>$email, 'hashedPwd'=>$hashedPwd])){
-                        header("Location: ../index.php?register=successful");
+                        header("Location: ../index.php");
                         exit();   
                     }
                 }
