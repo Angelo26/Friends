@@ -1,5 +1,5 @@
 <?php
-  if (isset($_POST['login'])) {
+  if (isset($_POST['uname']) && isset($_POST['upwd'])) {
     include 'db.inc.php';
     class Login extends DBconnection {
       Protected $username;
@@ -7,7 +7,7 @@
     
       function __construct() {
         $this->username = $_POST['uname'];
-        $this->password = $_POST['lpwd'];
+        $this->password = $_POST['upwd'];
       }
 
       function checkInfo() { 
@@ -20,22 +20,19 @@
           $stmt->execute(['user'=>$user]);
           $result = $stmt->rowCount();
           if($result<1){
-            header("Location: ../index.php?login=User not found");
-            exit();
+            return $result;
           }
           else{
             if($row = $stmt->fetch(PDO::FETCH_OBJ)){
               $hashedPwdCheck = password_verify($pwd, $row->password);
               if ($hashedPwdCheck == false){
-                header("Location: ../index.php?login=wrong password");
-                exit();
+                return "wp";
               }
                           
               elseif($hashedPwdCheck == $row->password){
                 $_SESSION['userid'] = $row->id;
                 $_SESSION['useremail'] = $row->email;
-                header("Location: ../friends.php");
-                exit();
+                return "sl";
               }
             }
           }
@@ -45,6 +42,6 @@
       }
     }
     $userObj = new Login();
-    $userObj->checkInfo();
+    echo $userObj->checkInfo();
   }
 ?>

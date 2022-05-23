@@ -19,7 +19,7 @@ if(isset($_POST['register'])) {
         $cpwd = $this->confirm_password;
 
         if($pwd!==$cpwd){
-            header("Location: ../index.php?register=passwords donot match.");
+            header("Location: ../index.php");
             exit();   
         }
         else{

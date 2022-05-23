@@ -13,15 +13,17 @@
                 <div class="log">
                     <h2>Join with your friends now!</h2>
                     
-                    <form action="includes/signin.inc.php" class="regForm" method = "POST">
+                    <form name="logForm" class="logForm" method="POST">
                         <div class="form-group">
                             <div class="username">
                                 <label for="uname">Email or Username</label>
                                 <input type="text" name="uname" id="uname" required>
+                                <span class="unameValMsg errMsg"></span>
                             </div>
                             <div class="password">
                                 <label for="lpwd">Password</label>
                                 <input type="password" name="lpwd" class="checkPwd cpd" id="lpwd" required><span class="togglePwdView cpd"></span>
+                                <span class="lpwdValMsg errMsg"></span>
                             </div>
                             <div class="fp">
                                 <h6>Forgot password?</h6>
@@ -35,7 +37,7 @@
                 <div class="reg">
                     <h2>Lets get started!</h2>
                     
-                    <form action="" method="POST">
+                    <form action="includes/signup.inc.php" class="regForm" method="POST">
                         <div class="form-group">
                   
                             <div class="email">

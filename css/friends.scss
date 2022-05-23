@@ -45,7 +45,7 @@
                     font-weight: bold;
                 }
 
-                form{
+                .logForm{
                     @include w-h(100%, auto);
                     @include dFlex(center, center, c);
                     .form-group{

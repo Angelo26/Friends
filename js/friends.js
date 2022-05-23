@@ -1,5 +1,5 @@
 
-$(document).ready(function () {
+$(document).ready(()=> {
 
     const fields = { emailVal: false, pwdVal: false, clicked: false };
     const patterns = {
@@ -12,12 +12,57 @@ $(document).ready(function () {
         }
     };
 
-    $("#email").focusout(function () {
+
+    $(".logForm").submit(()=>{
+        const ulname = $('#uname').val();
+        const ulpwd = $('#lpwd').val();
+        $.post("includes/signin.inc.php", {uname:ulname,upwd:ulpwd}, function(data){ 
+            if (data < 1){
+                $("#uname").css("border", "1px solid rgb(255, 51, 51)");
+                $(".unameValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> User doesn't exist");
+                $(".unameValMsg").fadeOut(5000);
+                setTimeout(()=>{$("#uname").css("border", "1px solid #555");},4000);
+                return false;
+            }
+            else{
+                if (data === "wp"){
+                    $('#lpwd').css("border", "1px solid rgb(255, 51, 51)");
+                    $(".lpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Incorrect password");
+                    $(".lpwdValMsg").fadeOut(5000);
+                    setTimeout(()=>{$("#lpwd").css("border", "1px solid #555");},4000);
+                    return false;
+                }
+                else if(data === "sl"){
+                    $url = "http://localhost:8080/friends/friends.php";
+                    window.location = $url;
+                    return false;
+                }
+            }
+        });
+        return false;
+    });
+
+
+
+    $("#email").focusout(()=> {
         if ($("#email").val() !== "") {
+            const uemail = $('#email').val();
+            
             if (patterns.email.test($("#email").val())) {
-                $('#email').css("border", "1px solid #555");
-                $(".emailValMsg").html("");
-                fields.emailVal = true;
+                $.post("includes/checkEmailReg.inc.php", {email:uemail}, function(data){ 
+                
+                    if (data < 1){
+                        $('#email').css("border", "1px solid #555");
+                        $(".emailValMsg").html("");
+                        fields.emailVal = true;
+                    }
+                    else{
+                        $('#email').css("border", "1px solid rgb(255, 51, 51)");
+                        $(".emailValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Email already exist");
+
+                        fields.emailVal = false;
+                    }
+                });
             }
             else {
                 $('#email').css("border", "1px solid rgb(255, 51, 51)");
@@ -31,7 +76,7 @@ $(document).ready(function () {
         }
     });
 
-    $("#rpwd").focusout(function () {
+    $("#rpwd").focusout(()=> {
         if ($("#rpwd").val() !== "") {
 
             if (patterns.rpwd.size.test($("#rpwd").val()) && patterns.rpwd.capital.test($("#rpwd").val()) && patterns.rpwd.number.test($("#rpwd").val()) && patterns.rpwd.special.test($("#rpwd").val())) {
@@ -48,18 +93,19 @@ $(document).ready(function () {
         }
     });
 
-    $("#crpwd").focusout(function () {
+    $("#crpwd").focusout(()=> {
         if ($("#crpwd").val() !== "") {
-
-            if ($("#crpwd").val() === $("#rpwd").val()) {
-                $('#crpwd').css("border", "1px solid #555");
-                $(".crpwdValMsg").html("");
-                fields.pwdVal = true;
-            } else {
-                $('#crpwd').css("border", "1px solid rgb(255, 51, 51)");
-                $(".crpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Passwords did no match");
-                fields.pwdVal = false;
-            }
+            $("#crpwd").keyup(()=> {
+                if ($("#crpwd").val() === $("#rpwd").val()) {
+                    $('#crpwd').css("border", "1px solid #555");
+                    $(".crpwdValMsg").html("");
+                    fields.pwdVal = true;
+                } else {
+                    $('#crpwd').css("border", "1px solid rgb(255, 51, 51)");
+                    $(".crpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Passwords did no match");
+                    fields.pwdVal = false;
+                }
+            });
         }
         else {
             $('#crpwd').css("border", "1px solid #555");
@@ -67,12 +113,17 @@ $(document).ready(function () {
         }
     });
 
-    // $(".regForm").submit(()=>{
+    $(".regForm").submit(()=>{
+        if(fields.emailVal && fields.pwdVal){
+            return true;
+        }
+        else{
+            alert("Sorry, we couldn't register account.")
+            return false;
+        }
+    });
 
-
-    // });
-
-    $(".checkPwd").focusin(function () {
+    $(".checkPwd").focusin(()=> {
         $(".checkPwd").css("padding", "0 1.75rem 0 0.25rem");
         if ($(".checkPwd").prop('type') === "password") {
             $(".togglePwdView").html('<i class="fa-solid fa-eye-slash"></i>');
@@ -83,7 +134,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".checkCPwd").focusin(function () {
+    $(".checkCPwd").focusin(()=> {
         $(".checkCPwd").css("padding", "0 1.75rem 0 0.25rem");
         if ($(".checkCPwd").prop('type') === "password") {
             $(".toggleCPwdView").html('<i class="fa-solid fa-eye-slash"></i>');
@@ -93,14 +144,14 @@ $(document).ready(function () {
             $(".toggleCPwdView").css("right", "0.3125rem");
         }
     });
-    $(".checkPwd").focusin(function () {
+    $(".checkPwd").focusin(()=> {
         $(".checkPwd").css("padding", " 0 0.25rem");
     });
-    $(".checkCPwd").focusin(function () {
+    $(".checkCPwd").focusin(()=> {
         $(".checkCPwd").css("padding", " 0 0.25rem");
     });
 
-    $(".togglePwdView").click(function () {
+    $(".togglePwdView").click(()=> {
         fields.clicked = true;
         if ($(".checkPwd").prop('type') === "password") {
             $(".togglePwdView").html('<i class="fa-solid fa-eye"></i>');
@@ -113,7 +164,7 @@ $(document).ready(function () {
         }
     });
 
-    $(".toggleCPwdView").click(function () {
+    $(".toggleCPwdView").click(()=> {
         fields.clicked = true;
         if ($(".checkCPwd").prop('type') === "password") {
             $(".toggleCPwdView").html('<i class="fa-solid fa-eye"></i>');
@@ -138,12 +189,12 @@ $(document).ready(function () {
         $(".errMsg").html("");
     }
 
-    $("#signup").click(function () {
+    $("#signup").click(()=> {
         $(".log").css("display", "none");
         $(".reg").fadeIn(500);
         defaultChanges();
     });
-    $("#signin").click(function () {
+    $("#signin").click(()=> {
         $(".reg").css("display", "none");
         $(".log").fadeIn(500);
         defaultChanges();
