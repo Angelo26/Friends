@@ -68,6 +68,10 @@
                                 border: 1px solid #555;
                             }
 
+                            input[type=password]{
+                                padding: 0 1.625rem 0 .125rem;
+                            }
+
                             .togglePwdView, .toggleCPwdView{
                                 position: absolute;
                                 font-size: $m;

@@ -96,6 +96,9 @@
   border-radius: 0.125rem;
   border: 1px solid #555;
 }
+.main .logReg .logRegCont .log form .form-group div input[type=password], .main .logReg .logRegCont .reg form .form-group div input[type=password] {
+  padding: 0 1.625rem 0 0.125rem;
+}
 .main .logReg .logRegCont .log form .form-group div .togglePwdView, .main .logReg .logRegCont .log form .form-group div .toggleCPwdView, .main .logReg .logRegCont .reg form .form-group div .togglePwdView, .main .logReg .logRegCont .reg form .form-group div .toggleCPwdView {
   position: absolute;
   font-size: 1rem;

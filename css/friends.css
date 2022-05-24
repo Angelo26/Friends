@@ -68,18 +68,24 @@
 }
 .main .content .section .showUsers .friends {
   width: 100%;
-  height: fit-content;
+  height: auto;
   border: 2px solid #555;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.main .content .section .showUsers .friends .followActs {
+.main .content .section .showUsers .friends .followAssoc {
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: auto auto;
+}
+.main .content .section .showUsers .friends .followAssoc .followers, .main .content .section .showUsers .friends .followAssoc .following {
   display: flex;
   justify-content: center;
-  align-items: start;
-  flex-direction: row;
+  align-items: center;
+  flex-direction: column;
 }
 
 /*# sourceMappingURL=friends.css.map */

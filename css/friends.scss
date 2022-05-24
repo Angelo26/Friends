@@ -1,5 +1,7 @@
 @use "index" as *;
 
+// div{ border: 1px solid red;}
+
 .main{
     @include w-h(100%, 100%);
     @include dFlex(center, center, c);
@@ -48,11 +50,15 @@
                 @include dGrid(c, auto auto auto auto);
                 
                 .friends{
-                    @include w-h(100%, fit-content);
+                    @include w-h(100%, auto);
                     border: 2px solid #555;
                     @include dFlex(center, center, c);
-                    .followActs{
-                        @include dFlex(center, start, r);
+                    .followAssoc{
+                        @include w-h(100%, auto);
+                        @include dGrid(c, auto auto);
+                        .followers, .following{
+                            @include dFlex(center, center, c);
+                        }
                         
                     }
                 }

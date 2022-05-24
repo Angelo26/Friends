@@ -8,6 +8,10 @@ else{
     require("db.inc.php");
     class Friends extends DBconnection{
 
+        function __construct(){
+            $this->userid = $_SESSION['userid'];
+        }
+
         function showFollowActivity($fid){
             try{
                 $friendsUser = new stdClass();
@@ -17,7 +21,7 @@ else{
                 $stmt->execute(['fid'=>$fid]);
                 $friendsUser->followers = $stmt->rowcount();
 
-                $sql = "SELECT * FROM followmap WHERE following=:fid";
+                $sql = "SELECT * FROM followmap WHERE followed=:fid";
                 $stmt = $this->dbConnect()->prepare($sql);
                 $stmt->execute(['fid'=>$fid]); 
                 $friendsUser->following = $stmt->rowcount();
@@ -29,31 +33,56 @@ else{
             }
         }
 
+        function followStatus($fwrid){
+            try{
+                $fwdid = $this->userid;
+
+                $sql = "SELECT * FROM followmap WHERE followers=:fwdid AND followed=:fwrid";
+                $stmt = $this->dbConnect()->prepare($sql);
+                $stmt->execute(["fwrid"=>$fwrid, "fwdid"=>$fwdid]);
+                $result = $stmt->rowCount();
+                return $result;
+            }
+            catch(PDOException $e){
+                echo "Error: " . $e->getMessage();
+            }
+
+        }
+
         function showUsers(){
             try{
-                $sql = "SELECT * FROM users";
+                $uid = $this->userid;
+                $sql = "SELECT * FROM users WHERE NOT id = :id";
                 $stmt = $this->dbConnect()->prepare($sql);
-                $stmt->execute();
+                $stmt->execute(['id'=>$uid]);
                 $result = $stmt->fetchAll();
                 foreach($result as $row){
                 ?>
                     <div class="friends">
-                        <p><?php echo $row['email'];?></p>
+                        <h3><?php echo $row['username'];?></h3>
                     <?php
-                        $getUsers = $this->showFollowActivity($row['id']);
+                        $this->getUsers = $this->showFollowActivity($row['id']);
                     ?>
-                        <div class="followActs">
+                        <div class="followAssoc">
                             <div class="followers">
                                 <p>Followers</p>
-                                <p><?php echo $getUsers->followers?></p>
+                                <p><?php echo $this->getUsers->followers?></p>
                             </div>
                             <div class="following">
                                 <p>Following</p>
-                                <p><?php echo $getUsers->following?></p>
+                                <p><?php echo $this->getUsers->following?></p>
                             </div>
                         </div>
-                        <div class="followActions">
-                            <button>Follow</button>
+                        <div class="followStatus">
+                            <?php $this->followStatus = $this->followStatus($row['id']);
+                                if($this->followStatus>0){
+                                    $this->fstatus="UnFollow";
+                                }
+                                else{
+                                    $this->fstatus="Follow";
+                                }
+                            ?>
+                            <button class="followActions" onclick="followActions(<?php echo $row['id'];?>, <?php echo $this->followStatus;?>)"><?php echo $this->fstatus;?></button>
                         </div>
                     </div>
                 <?php

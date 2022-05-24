@@ -20,9 +20,9 @@
                     <form name="logForm" class="logForm" method="POST">
                         <div class="form-group">
                             <div class="username">
-                                <label for="uname">Email or Username</label>
-                                <input type="text" name="uname" id="uname" required>
-                                <span class="unameValMsg errMsg"></span>
+                                <label for="username">Email or Username</label>
+                                <input type="text" name="ulname" id="ulname" required>
+                                <span class="ulnameValMsg errMsg"></span>
                             </div>
                             <div class="password">
                                 <label for="lpwd">Password</label>
@@ -43,6 +43,11 @@
                     
                     <form action="includes/signup.inc.php" class="regForm" method="POST">
                         <div class="form-group">
+                            <div class="username">
+                                <label for="username">Username</label>
+                                <input type="text" name="uname" id="uname" required>
+                                <span class="unameValMsg errMsg"></span>
+                            </div>
                             <div class="email">
                                 <label for="email">Email address</label>
                                 <input type="email" name="email" id="email" required>

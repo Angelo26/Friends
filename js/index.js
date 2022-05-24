@@ -1,8 +1,9 @@
 
 $(document).ready(()=> {
 
-    const fields = { emailVal: false, pwdVal: false, clicked: false };
+    const fields = {unameVal: false, emailVal: false, pwdVal: false, cpwdVal: false};
     const patterns = {
+        uname:/^[\w]{3,}$/,
         email: /^([a-zA-Z\d\.-_])+@[a-z\d-]+\.([a-z]{2,7})(\.[a-z]{2,5})?$/,
         rpwd: {
             size: /^.{8,}$/,
@@ -14,14 +15,14 @@ $(document).ready(()=> {
 
 
     $(".logForm").submit(()=>{
-        const ulname = $('#uname').val();
+        const ulname = $('#ulname').val();
         const ulpwd = $('#lpwd').val();
-        $.post("includes/signin.inc.php", {uname:ulname,upwd:ulpwd}, function(data){ 
+        $.post("includes/signin.inc.php", {uname:ulname,upwd:ulpwd}, (data)=>{ 
             if (data < 1){
-                $("#uname").css("border", "1px solid rgb(255, 51, 51)");
-                $(".unameValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> User doesn't exist");
-                $(".unameValMsg").fadeOut(5000);
-                setTimeout(()=>{$("#uname").css("border", "1px solid #555");},4000);
+                $("#ulname").css("border", "1px solid rgb(255, 51, 51)");
+                $(".ulnameValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> User doesn't exist");
+                $(".ulnameValMsg").fadeOut(5000);
+                setTimeout(()=>{$("#ulname").css("border", "1px solid #555");},4000);
                 return false;
             }
             else{
@@ -42,6 +43,38 @@ $(document).ready(()=> {
         return false;
     });
 
+    $("#uname").focusout(()=> {
+        if ($("#uname").val() !== "") {
+            const uname = $('#uname').val();
+            
+            if (patterns.uname.test($("#uname").val())) {
+                $.post("includes/checkEmailReg.inc.php", {uname:uname}, (data)=>{ 
+                    console.log(data);
+                    if (data < 1){
+                        $('#uname').css("border", "1px solid #555");
+                        $(".unameValMsg").html("");
+                        fields.unameVal = true;
+                    }
+                    else{
+                        $('#uname').css("border", "1px solid rgb(255, 51, 51)");
+                        $(".unameValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Username taken");
+
+                        fields.unameVal = false;
+                    }
+                });
+            }
+            else {
+                $('#uname').css("border", "1px solid rgb(255, 51, 51)");
+                $(".unameValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> eg. John_Doe23, John12");
+                fields.unameVal = false;
+            }
+        }
+        else {
+            $('#uname').css("border", "1px solid #555");
+            $(".unameValMsg").html("");
+        }
+    });
+
 
 
     $("#email").focusout(()=> {
@@ -49,7 +82,7 @@ $(document).ready(()=> {
             const uemail = $('#email').val();
             
             if (patterns.email.test($("#email").val())) {
-                $.post("includes/checkEmailReg.inc.php", {email:uemail}, function(data){ 
+                $.post("includes/checkEmailReg.inc.php", {email:uemail}, (data)=>{ 
                 
                     if (data < 1){
                         $('#email').css("border", "1px solid #555");
@@ -76,16 +109,25 @@ $(document).ready(()=> {
         }
     });
 
-    $("#rpwd").focusout(()=> {
+    $("#rpwd").keyup(()=> {
         if ($("#rpwd").val() !== "") {
-
             if (patterns.rpwd.size.test($("#rpwd").val()) && patterns.rpwd.capital.test($("#rpwd").val()) && patterns.rpwd.number.test($("#rpwd").val()) && patterns.rpwd.special.test($("#rpwd").val())) {
                 $('#rpwd').css("border", "1px solid #555");
                 $(".rpwdValMsg").html("");
+                fields.pwdVal = true;
+
             } else {
                 $('#rpwd').css("border", "1px solid rgb(255, 51, 51)");
                 $(".rpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Include atleast 8 characters, a number, a capital letter and a special charater");
+                fields.pwdVal = false;
             }
+
+            if(fields.cpwdVal){
+                $("#rpwd").keyup(()=>{
+                    crpwdCheck();
+                });
+            }
+
         }
         else {
             $('#rpwd').css("border", "1px solid #555");
@@ -93,19 +135,31 @@ $(document).ready(()=> {
         }
     });
 
-    $("#crpwd").focusout(()=> {
-        if ($("#crpwd").val() !== "") {
-            $("#crpwd").keyup(()=> {
+    $("#crpwd").keyup(()=> {
+        if ($("#crpwd").val() !== "" && $("#rpwd").val() !== "") {
+            const regPwd = $("#rpwd").val();
+            const arrRpwd = [...regPwd];
+            const confirmPwd = $("#crpwd").val();
+            const arrCpwd = [...confirmPwd];
+            
+            if(arrRpwd[arrCpwd.length-1] === arrCpwd[arrCpwd.length-1]){
+                
+
+                $('#crpwd').css("border", "1px solid #555");
+                $(".crpwdValMsg").html("");
+                
                 if ($("#crpwd").val() === $("#rpwd").val()) {
-                    $('#crpwd').css("border", "1px solid #555");
-                    $(".crpwdValMsg").html("");
-                    fields.pwdVal = true;
-                } else {
-                    $('#crpwd').css("border", "1px solid rgb(255, 51, 51)");
-                    $(".crpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Passwords did no match");
-                    fields.pwdVal = false;
+                    fields.cpwdVal = true;
                 }
-            });
+                else{
+                    fields.cpwdVal = false;
+                }
+            }
+            else{
+                $('#crpwd').css("border", "1px solid rgb(255, 51, 51)");
+                $(".crpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Passwords did no match");
+                fields.cpwdVal = false;
+            }
         }
         else {
             $('#crpwd').css("border", "1px solid #555");
@@ -113,18 +167,39 @@ $(document).ready(()=> {
         }
     });
 
+    $("#rpwd").focusout(()=> {
+        crpwdCheck();
+    });
+
+    $("#crpwd").focusout(()=> {
+        crpwdCheck();
+    });
+
+    function crpwdCheck(){
+        if ($("#crpwd").val() !== ""){
+            if ($("#crpwd").val() === $("#rpwd").val()) {
+                $('#crpwd').css("border", "1px solid #555");
+                $(".crpwdValMsg").html("");
+                fields.cpwdVal = true;
+            } else {
+                $('#crpwd').css("border", "1px solid rgb(255, 51, 51)");
+                $(".crpwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Passwords did no match");
+                fields.cpwdVal = false;
+            }
+        }
+    }
+
     $(".regForm").submit(()=>{
-        if(fields.emailVal && fields.pwdVal){
+        crpwdCheck();
+        if(fields.unameVal && fields.emailVal && fields.pwdVal && fields.cpwdVal){
             return true;
         }
         else{
-            alert("Sorry, we couldn't register account.")
             return false;
         }
     });
 
-    $(".checkPwd").keyup(()=> {
-        $(".checkPwd").css("padding", "0 1.75rem 0 0.25rem");
+    $(".checkPwd").focusin(()=> {
         if ($(".checkPwd").prop('type') === "password") {
             $(".togglePwdView").html('<i class="fa-solid fa-eye-slash"></i>');
             $(".togglePwdView").css("right", "0.25rem");
@@ -135,7 +210,6 @@ $(document).ready(()=> {
     });
 
     $(".checkCPwd").focusin(()=> {
-        $(".checkCPwd").css("padding", "0 1.75rem 0 0.25rem");
         if ($(".checkCPwd").prop('type') === "password") {
             $(".toggleCPwdView").html('<i class="fa-solid fa-eye-slash"></i>');
             $(".toggleCPwdView").css("right", "0.25rem");
@@ -143,12 +217,6 @@ $(document).ready(()=> {
             $(".toggleCPwdView").html('<i class="fa-solid fa-eye"></i>');
             $(".toggleCPwdView").css("right", "0.3125rem");
         }
-    });
-    $(".checkPwd").focusin(()=> {
-        $(".checkPwd").css("padding", " 0 0.25rem");
-    });
-    $(".checkCPwd").focusin(()=> {
-        $(".checkCPwd").css("padding", " 0 0.25rem");
     });
 
     $(".togglePwdView").click(()=> {
@@ -180,6 +248,8 @@ $(document).ready(()=> {
     function defaultChanges() {
         fields.emailVal = false;
         fields.pwdVal = false;
+        fields.cpwdVal = false;
+        fields.index = 0;
         $(".checkPwd").prop('type', 'password');
         $(".checkCPwd").prop('type', 'password');
         $(".togglePwdView").html('');
