@@ -5,7 +5,7 @@
         exit();
     }
 ?>
-    
+    <link rel="stylesheet" href="css/main.css">
     <div class="main">
         <div class="logoAcro">
             <h1>FRIENDS</h1>

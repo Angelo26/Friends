@@ -24,7 +24,7 @@ else{
             
                 return $friendsUser;
             }
-            catch(PDOExtension $e){
+            catch(PDOException $e){
                 echo "Error: " . $e->getMessage();
             }
         }
@@ -37,19 +37,24 @@ else{
                 $result = $stmt->fetchAll();
                 foreach($result as $row){
                 ?>
-                    <div class="friendsUser">
+                    <div class="friends">
                         <p><?php echo $row['email'];?></p>
                     <?php
                         $getUsers = $this->showFollowActivity($row['id']);
                     ?>
                         <div class="followActs">
-                            <div class="followers"><?php echo $getUsers->followers?></div>
-                            <div class="following"><?php echo $getUsers->following?></div>
+                            <div class="followers">
+                                <p>Followers</p>
+                                <p><?php echo $getUsers->followers?></p>
+                            </div>
+                            <div class="following">
+                                <p>Following</p>
+                                <p><?php echo $getUsers->following?></p>
+                            </div>
                         </div>
-                        <!--<div class="followActions">
-                            <div class="follow"></div>
-                            <div class="unfollow"></div>
-                        </div> -->
+                        <div class="followActions">
+                            <button>Follow</button>
+                        </div>
                     </div>
                 <?php
                 }    

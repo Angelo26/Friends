@@ -1,16 +1,64 @@
 @use "index" as *;
 
 .main{
-    // @include w-h(100%, 100vh);
-    // @include dFlex(center, center, c)
-}
-.header{
-    .logout{
-        border: none;
-        background: $primary;
-        border-radius: 5px;
-        padding: 6px 18px;
-        color: #fff;
-        float: right;
+    @include w-h(100%, 100%);
+    @include dFlex(center, center, c);
+    .content{
+        @include w-h(calc(100vw - 20%), auto);
+        @include dGrid(r, 1fr 2fr);
+        .header{
+            @include w-h(100%, auto);
+            @include dGrid(c, 1fr 1fr);
+            margin: 2rem 0 1rem 0;
+            .logo{
+                @include w-h(100%, auto);
+                a{
+                    text-decoration: none;
+                    h1{
+                        font-size: calc($xxl);
+                        font-family: $logo;
+                        font-weight: bolder;
+                        color: $primary;
+                        text-shadow: 3px 3px #ccc;
+                        cursor: pointer;
+                    }
+                }
+                // p{
+                //     font-size: $s;
+                //     font-weight: bold;
+                // }
+            }
+            form{
+                @include w-h(100%, auto);
+                .logout{
+                    border: none;
+                    background: $primary;
+                    border-radius: 5px;
+                    padding: 6px 18px;
+                    color: #fff;
+                    float: right;
+                }
+            }
+        }
+        .section{
+            @include w-h(100%, auto);
+            @include dFlex(center, center, c);
+            .showUsers{
+                @include w-h(100%, auto);
+                @include dGrid(c, auto auto auto auto);
+                
+                .friends{
+                    @include w-h(100%, fit-content);
+                    border: 2px solid #555;
+                    @include dFlex(center, center, c);
+                    .followActs{
+                        @include dFlex(center, start, r);
+                        
+                    }
+                }
+                
+            }
+        }
     }
+
 }
