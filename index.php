@@ -1,8 +1,12 @@
 <?php
     require 'header.php';
+    if(isset($_SESSION['userid'])){
+        header("Location: friends.php");
+        exit();
+    }
 ?>
+    
     <div class="main">
-        
         <div class="logoAcro">
             <h1>FRIENDS</h1>
             <p>Let's connect together.</p>
@@ -39,7 +43,6 @@
                     
                     <form action="includes/signup.inc.php" class="regForm" method="POST">
                         <div class="form-group">
-                  
                             <div class="email">
                                 <label for="email">Email address</label>
                                 <input type="email" name="email" id="email" required>
@@ -63,6 +66,6 @@
             </div>
         </div>
     </div>
-</body>
-<script src="js/friends.js"></script>
-</html>
+<?php
+    require "footer.php";
+?>

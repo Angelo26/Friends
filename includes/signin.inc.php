@@ -1,4 +1,5 @@
 <?php
+  session_start();
   if (isset($_POST['uname']) && isset($_POST['upwd'])) {
     include 'db.inc.php';
     class Login extends DBconnection {
