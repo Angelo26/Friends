@@ -48,7 +48,7 @@
   align-items: start;
   flex-direction: column;
 }
-.main .logReg .logRegCont .log, .main .logReg .logRegCont .reg {
+.main .logReg .logRegCont .log, .main .logReg .logRegCont .reg, .main .logReg .logRegCont .frgtPwd {
   width: 100%;
   height: auto;
   display: flex;
@@ -56,13 +56,13 @@
   align-items: center;
   flex-direction: column;
 }
-.main .logReg .logRegCont .log h2, .main .logReg .logRegCont .reg h2 {
+.main .logReg .logRegCont .log h2, .main .logReg .logRegCont .reg h2, .main .logReg .logRegCont .frgtPwd h2 {
   text-align: center;
   margin-top: 1.5rem;
   font-size: 1.25rem;
   font-weight: bold;
 }
-.main .logReg .logRegCont .log form, .main .logReg .logRegCont .reg form {
+.main .logReg .logRegCont .log form, .main .logReg .logRegCont .reg form, .main .logReg .logRegCont .frgtPwd form {
   width: 100%;
   height: auto;
   display: flex;
@@ -70,7 +70,7 @@
   align-items: center;
   flex-direction: column;
 }
-.main .logReg .logRegCont .log form .form-group, .main .logReg .logRegCont .reg form .form-group {
+.main .logReg .logRegCont .log form .form-group, .main .logReg .logRegCont .reg form .form-group, .main .logReg .logRegCont .frgtPwd form .form-group {
   width: 80%;
   height: auto;
   display: flex;
@@ -79,34 +79,34 @@
   flex-direction: column;
   margin-top: 1.5rem;
 }
-.main .logReg .logRegCont .log form .form-group div, .main .logReg .logRegCont .reg form .form-group div {
+.main .logReg .logRegCont .log form .form-group div, .main .logReg .logRegCont .reg form .form-group div, .main .logReg .logRegCont .frgtPwd form .form-group div {
   margin-bottom: 1.5rem;
   position: relative;
   width: 100%;
   height: auto;
 }
-.main .logReg .logRegCont .log form .form-group div label, .main .logReg .logRegCont .reg form .form-group div label {
+.main .logReg .logRegCont .log form .form-group div label, .main .logReg .logRegCont .reg form .form-group div label, .main .logReg .logRegCont .frgtPwd form .form-group div label {
   font-size: 0.75rem;
   color: #555;
 }
-.main .logReg .logRegCont .log form .form-group div input, .main .logReg .logRegCont .reg form .form-group div input {
+.main .logReg .logRegCont .log form .form-group div input, .main .logReg .logRegCont .reg form .form-group div input, .main .logReg .logRegCont .frgtPwd form .form-group div input {
   width: 100%;
   height: auto;
   padding: 0 0.25rem;
   border-radius: 0.125rem;
   border: 1px solid #555;
 }
-.main .logReg .logRegCont .log form .form-group div input[type=password], .main .logReg .logRegCont .reg form .form-group div input[type=password] {
+.main .logReg .logRegCont .log form .form-group div input[type=password], .main .logReg .logRegCont .reg form .form-group div input[type=password], .main .logReg .logRegCont .frgtPwd form .form-group div input[type=password] {
   padding: 0 1.625rem 0 0.125rem;
 }
-.main .logReg .logRegCont .log form .form-group div .togglePwdView, .main .logReg .logRegCont .log form .form-group div .toggleCPwdView, .main .logReg .logRegCont .reg form .form-group div .togglePwdView, .main .logReg .logRegCont .reg form .form-group div .toggleCPwdView {
+.main .logReg .logRegCont .log form .form-group div .togglePwdView, .main .logReg .logRegCont .log form .form-group div .toggleCPwdView, .main .logReg .logRegCont .reg form .form-group div .togglePwdView, .main .logReg .logRegCont .reg form .form-group div .toggleCPwdView, .main .logReg .logRegCont .frgtPwd form .form-group div .togglePwdView, .main .logReg .logRegCont .frgtPwd form .form-group div .toggleCPwdView {
   position: absolute;
   font-size: 1rem;
   color: #555;
   cursor: pointer;
   padding-top: 0.0625rem;
 }
-.main .logReg .logRegCont .log form .form-group div .errMsg, .main .logReg .logRegCont .reg form .form-group div .errMsg {
+.main .logReg .logRegCont .log form .form-group div .errMsg, .main .logReg .logRegCont .reg form .form-group div .errMsg, .main .logReg .logRegCont .frgtPwd form .form-group div .errMsg {
   font-size: 0.75rem;
   font-weight: bold;
   color: rgb(255, 51, 51);
@@ -116,7 +116,7 @@
   top: 3.25rem;
   line-height: 0.875rem;
 }
-.main .logReg .logRegCont .log form .form-group .fp, .main .logReg .logRegCont .reg form .form-group .fp {
+.main .logReg .logRegCont .log form .form-group .fp, .main .logReg .logRegCont .reg form .form-group .fp, .main .logReg .logRegCont .frgtPwd form .form-group .fp {
   width: 100%;
   height: auto;
   display: flex;
@@ -125,7 +125,7 @@
   flex-direction: column;
   margin: 0 0 0.75rem 0;
 }
-.main .logReg .logRegCont .log form .form-group .fp h6, .main .logReg .logRegCont .reg form .form-group .fp h6 {
+.main .logReg .logRegCont .log form .form-group .fp h6, .main .logReg .logRegCont .reg form .form-group .fp h6, .main .logReg .logRegCont .frgtPwd form .form-group .fp h6 {
   font-size: 0.8125rem;
   font-weight: bold;
   padding-left: 0.25rem;
@@ -133,10 +133,10 @@
   cursor: pointer;
   transition: color 0.3s ease-in-out;
 }
-.main .logReg .logRegCont .log form .form-group .fp h6:hover, .main .logReg .logRegCont .reg form .form-group .fp h6:hover {
+.main .logReg .logRegCont .log form .form-group .fp h6:hover, .main .logReg .logRegCont .reg form .form-group .fp h6:hover, .main .logReg .logRegCont .frgtPwd form .form-group .fp h6:hover {
   color: #593959;
 }
-.main .logReg .logRegCont .log form .form-group button, .main .logReg .logRegCont .reg form .form-group button {
+.main .logReg .logRegCont .log form .form-group button, .main .logReg .logRegCont .reg form .form-group button, .main .logReg .logRegCont .frgtPwd form .form-group button {
   width: 100%;
   height: auto;
   margin: 0 0 2rem 0;
@@ -147,14 +147,14 @@
   color: #fff;
   transition: all 0.3s ease-in-out;
 }
-.main .logReg .logRegCont .log form .form-group button:hover, .main .logReg .logRegCont .reg form .form-group button:hover {
+.main .logReg .logRegCont .log form .form-group button:hover, .main .logReg .logRegCont .reg form .form-group button:hover, .main .logReg .logRegCont .frgtPwd form .form-group button:hover {
   background: #704c83;
   box-shadow: 1px 3px 5px #aaa;
 }
-.main .logReg .logRegCont .log form .form-group button:active, .main .logReg .logRegCont .reg form .form-group button:active {
+.main .logReg .logRegCont .log form .form-group button:active, .main .logReg .logRegCont .reg form .form-group button:active, .main .logReg .logRegCont .frgtPwd form .form-group button:active {
   box-shadow: none;
 }
-.main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p {
+.main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p, .main .logReg .logRegCont .frgtPwd form .form-group p {
   width: 100%;
   height: auto;
   text-align: center;
@@ -163,29 +163,29 @@
   color: #000;
   margin-bottom: 2rem;
 }
-.main .logReg .logRegCont .log form .form-group p #signin, .main .logReg .logRegCont .log form .form-group p #signup, .main .logReg .logRegCont .reg form .form-group p #signin, .main .logReg .logRegCont .reg form .form-group p #signup {
+.main .logReg .logRegCont .log form .form-group p #signin, .main .logReg .logRegCont .log form .form-group p #signup, .main .logReg .logRegCont .log form .form-group p #fsignin, .main .logReg .logRegCont .reg form .form-group p #signin, .main .logReg .logRegCont .reg form .form-group p #signup, .main .logReg .logRegCont .reg form .form-group p #fsignin, .main .logReg .logRegCont .frgtPwd form .form-group p #signin, .main .logReg .logRegCont .frgtPwd form .form-group p #signup, .main .logReg .logRegCont .frgtPwd form .form-group p #fsignin {
   margin-left: 0.125rem;
   color: #8d6a9f;
   cursor: pointer;
 }
-.main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo {
+.main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo, .main .logReg .logRegCont .frgtPwd form .form-group p #regLogo {
   margin-right: 0.0625rem;
   font-family: "Shadows Into Light";
   font-size: 0.875rem;
 }
 @media (min-width: 0px) and (max-width: 479px) {
-  .main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo {
+  .main .logReg .logRegCont .log form .form-group p #regLogo, .main .logReg .logRegCont .reg form .form-group p #regLogo, .main .logReg .logRegCont .frgtPwd form .form-group p #regLogo {
     font-size: 0.75rem;
     color: #000;
   }
 }
 @media (min-width: 0px) and (max-width: 479px) {
-  .main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p {
+  .main .logReg .logRegCont .log form .form-group p, .main .logReg .logRegCont .reg form .form-group p, .main .logReg .logRegCont .frgtPwd form .form-group p {
     font-size: 0.8125rem;
     color: #000;
   }
 }
-.main .logReg .logRegCont .reg {
+.main .logReg .logRegCont .reg, .main .logReg .logRegCont .frgtPwd {
   display: none;
 }
 

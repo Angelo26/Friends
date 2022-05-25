@@ -1,7 +1,7 @@
 
 $(document).ready(()=> {
 
-    const fields = {unameVal: false, emailVal: false, pwdVal: false, cpwdVal: false};
+    const fields = {unameVal: false, emailVal: false, pwdVal: false, cpwdVal: false, fpVal: false};
     const patterns = {
         uname:/^[\w]{3,}$/,
         email: /^([a-zA-Z\d\.-_])+@[a-z\d-]+\.([a-z]{2,7})(\.[a-z]{2,5})?$/,
@@ -108,6 +108,39 @@ $(document).ready(()=> {
             $(".emailValMsg").html("");
         }
     });
+
+    $("#frgtPwd").focusout(()=> {
+        if ($("#frgtPwd").val() !== "") {
+            const uemail = $('#frgtPwd').val();
+            
+            if (patterns.email.test($("#frgtPwd").val())) {
+                $.post("includes/checkEmailReg.inc.php", {email:uemail}, (data)=>{ 
+                
+                    if (data > 0){
+                        $('#frgtPwd').css("border", "1px solid #555");
+                        $(".frgtPwdValMsg").html("");
+                        fields.fpVal = true;
+                    }
+                    else{
+                        $('#frgtPwd').css("border", "1px solid rgb(255, 51, 51)");
+                        $(".frgtPwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> User doesn't exist");
+
+                        fields.fpVal = false;
+                    }
+                });
+            }
+            else {
+                $('#frgtPwd').css("border", "1px solid rgb(255, 51, 51)");
+                $(".frgtPwdValMsg").html("<i class='fa-solid fa-circle-exclamation'></i> Invalid email address");
+                fields.fpVal = false;
+            }
+        }
+        else {
+            $('#frgtPwd').css("border", "1px solid #555");
+            $(".frgtPwdValMsg").html("");
+        }
+    });
+
 
     $("#rpwd").keyup(()=> {
         if ($("#rpwd").val() !== "") {
@@ -245,6 +278,12 @@ $(document).ready(()=> {
         }
     });
 
+    $(".frgtPwdBtn").click(()=>{
+        const ufemail = $(".frgPwd").val();
+        $.post("includes/fgtPwd.inc.php", {ufemail:ufemail}, (data)=>{ 
+        });
+    });
+
     function defaultChanges() {
         fields.emailVal = false;
         fields.pwdVal = false;
@@ -259,14 +298,21 @@ $(document).ready(()=> {
         $(".errMsg").html("");
     }
 
-    $("#signup").click(()=> {
+    $(".lsp").click(()=> {
         $(".log").css("display", "none");
         $(".reg").fadeIn(500);
         defaultChanges();
     });
-    $("#signin").click(()=> {
+    $(".rsn").click(()=> {
         $(".reg").css("display", "none");
+        $(".frgtPwd").css("display", "none");
         $(".log").fadeIn(500);
         defaultChanges();
     });
+    $(".fp").click(()=> {
+        $(".log").css("display", "none");
+        $(".frgtPwd").fadeIn(500);
+        defaultChanges();
+    });
+
 });

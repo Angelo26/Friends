@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/main.css">
     <div class="main">
         <div class="logoAcro">
-            <h1>FRIENDS</h1>
+            <h1><span>P</span><span>A</span><span>P</span><span>O</span><span>L</span><span>A</span><span>R</span></h1>
             <p>Let's connect together.</p>
         </div>
 
@@ -33,7 +33,7 @@
                                 <h6>Forgot password?</h6>
                             </div>
                             <button name="login" type="submit">Sign In</button>
-                            <p>New to <span id="regLogo">FRIENDS</span>?<span id="signup"> Create an account.</span></p>
+                            <p>New to <span id="regLogo">FRIENDS</span>?<span class="lsp" id="signup"> Create an account.</span></p>
                         </div>
                     </form>
                 </div>
@@ -64,7 +64,23 @@
                                 <span class="crpwdValMsg  errMsg"></span>
                             </div>
                             <button name="register" type="submit">Sign Up</button>
-                            <p>Already have an account? <span id="signin">Sign in.</span></p>
+                            <p>Already have an account? <span class="rsn" id="signin">Sign in.</span></p>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="frgtPwd">
+                <h2>Request an email reset link</h2>
+                    
+                    <form action="includes/frgtPwd.inc.php" class="frgtPwdForm" method="POST">
+                        <div class="form-group">
+                            <div class="email">
+                                <label for="email">Email address</label>
+                                <input type="email" name="email" id="frgtPwd" required>
+                                <span class="frgtPwdValMsg errMsg"></span>
+                            </div>
+                            <button name="frgtPwdBtn" type="submit">Send link</button>
+                            <p>Remembered password? <span class="rsn" id="fsignin">Sign in.</span></p>
                         </div>
                     </form>
                 </div>

@@ -34,7 +34,7 @@
             @include w-h(310px, auto);
             @include dFlex(center, start, c);
             
-            .log, .reg{
+            .log, .reg, .frgtPwd{
                 @include w-h(100%, auto);
                 @include dFlex(center, center, c);
                 
@@ -134,7 +134,7 @@
                             font-weight: bold;
                             color: #000;
                             margin-bottom: 2rem;
-                            #signin, #signup{
+                            #signin, #signup, #fsignin{
                                 margin-left: .125rem;
                                 color: $secondary;
                                 cursor: pointer;
@@ -157,7 +157,7 @@
                     }
                 }
             }
-            .reg{
+            .reg, .frgtPwd{
                 display: none;
             }
         }
